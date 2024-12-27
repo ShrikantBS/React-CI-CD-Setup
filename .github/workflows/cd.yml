@@ -5,6 +5,7 @@ on:
         workflows: ["Sample Reacct CI Pipeline / Workflow"]
         types:
             - completed
+    workflow_dispatch:        
 
 jobs: 
     deploy:
@@ -22,7 +23,7 @@ jobs:
               run: npm install -g vercel
 
             - name: "Download build files"
-              uses: actions/download-artifacts@v4
+              uses: actions/download-artifact@v4
               with:
                 name: build
                 run-id: ${{ github.event.workflow_run.id }}
